@@ -18,7 +18,7 @@ import { Feather } from "@expo/vector-icons";
 import { theme } from "@/styles/theme";
 import { VerticalStack } from "@/components/VerticalStack";
 import { Button } from "@/components/Button";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
 export default function Root() {
     const { colors } = theme;
     const { safeTop } = useSafeTop(8);
@@ -56,19 +56,20 @@ export default function Root() {
                             translucent
                             backgroundColor="transparent"
                         />
-
-                        <Button
-                            className="h-16"
-                            LeftIcon={
-                                <Feather
-                                    name="search"
-                                    size={24}
-                                    color={colors.red[500]}
-                                />
-                            }
-                        >
-                            Explore nearby stays
-                        </Button>
+                        <Link href={"(tabs)"} asChild>
+                            <Button
+                                className="h-16"
+                                LeftIcon={
+                                    <Feather
+                                        name="search"
+                                        size={24}
+                                        color={colors.red[500]}
+                                    />
+                                }
+                            >
+                                Explore nearby stays
+                            </Button>
+                        </Link>
 
                         {/* <Input.Input
                             placeholderTextColor={colors.gray[900]}

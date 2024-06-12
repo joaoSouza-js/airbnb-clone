@@ -31,7 +31,7 @@ export default function RootLayout(){
     })
 
     if(fontIsLoaded === false){
-        return <Loader className="bg-gray-900"/>
+        return <Loader className="bg-gray-200"/>
     }
     return (
         <>
