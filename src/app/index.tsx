@@ -24,10 +24,7 @@ export default function Root() {
     const { safeTop } = useSafeTop(8);
     const dimensions = useWindowDimensions();
 
-    function handleSearch(search: string) {
-        if (!search || search === "") return;
-        router.push(`searchPlace/${search}`);
-    }
+   
 
     return (
         <KeyboardAvoidingView

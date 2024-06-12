@@ -27,8 +27,6 @@ export function PlacePreview(props: PlacePreviewProps) {
     const [imageIndexVisible, setImageIndexVisible] = useState(0);
     const [placeIsLiked, setPlaceIsLiked] = useState(false);
 
-    const isDoubleClickInPlace = useRef<string | boolean>(false);
-
     const dimension = useWindowDimensions();
     const screenHeight = dimension.height;
     const screenWidth = dimension.width;
@@ -127,14 +125,14 @@ export function PlacePreview(props: PlacePreviewProps) {
                     1 bedromm
                 </Text>
             </HorizontalStack>
-            <Text numberOfLines={2} className="text-gray-700 ">
+            <Text numberOfLines={2} className="text-gray-700 mt-1">
                 {place.title} ° {place.location}
             </Text>
             <HorizontalStack className="gap-2 mt-2">
                 <Text fontFamily="InterBold" className="line-through">
                     ${place.price}
                 </Text>
-                <Text fontFamily="InterBold">${placeWithDiscount}</Text>
+                <Text className="text-gray-700" fontFamily="InterBold">${placeWithDiscount}</Text>
                 <Text>/ {place.availablePeriod}</Text>
                 <Text className="underline">$220 total</Text>
             </HorizontalStack>
