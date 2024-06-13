@@ -5,6 +5,7 @@ import { Input } from "@/components/Input";
 import { Text } from "@/components/Text";
 import { VerticalStack } from "@/components/VerticalStack";
 import { CalendarModal } from "@/components/pages/search/CalendarModal";
+import { GuestingModal } from "@/components/pages/search/GuestingModal";
 import { SearchLocationModal } from "@/components/pages/search/SearchLocationModal";
 import { useSafeBottom } from "@/hooks/useSafeBottom";
 import { useSafeTop } from "@/hooks/useSafeTop";
@@ -22,6 +23,7 @@ export default function search() {
         useState(false);
 
     const [calendarModalIsVisible, setCalendarModalIsVisible] = useState(false);
+    const [guestingModalIsVisible, setGuestingModalIsVisible] = useState(false);
 
     function openLocationSearchModal() {
         setLocationSearchModalIsVisible(true);
@@ -37,6 +39,14 @@ export default function search() {
 
     function closeCalendarModal() {
         setCalendarModalIsVisible(false);
+    }
+
+    function openGuestingModal() {
+        setGuestingModalIsVisible(true);
+    }
+
+    function closeGuestingModal() {
+        setGuestingModalIsVisible(false);
     }
 
     return (
@@ -93,7 +103,10 @@ export default function search() {
                         </HorizontalStack>
                     </TouchableOpacity>
 
-                    <TouchableOpacity activeOpacity={0.7}>
+                    <TouchableOpacity
+                        activeOpacity={0.7}
+                        onPress={openGuestingModal}
+                    >
                         <HorizontalStack className="justify-between px-4 py-6 bg-white rounded-2xl">
                             <Text className="text-gray-600">Who</Text>
                             <Text fontFamily="InterBold">Any Guest</Text>
@@ -131,6 +144,10 @@ export default function search() {
             <CalendarModal
                 visible={calendarModalIsVisible}
                 closeModal={closeCalendarModal}
+            />
+            <GuestingModal
+                visible={guestingModalIsVisible}
+                closeModal={closeGuestingModal}
             />
         </VerticalStack>
     );

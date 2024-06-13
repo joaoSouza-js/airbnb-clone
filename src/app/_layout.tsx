@@ -1,5 +1,7 @@
 import { Slot, Stack, router } from "expo-router";
 import "@/styles/global.css";
+import "dayjs/locale/pt-br"
+import dayjs from "dayjs";
 import {
     Inter_400Regular,
     Inter_500Medium,
@@ -16,6 +18,10 @@ import {
 import { Loader } from "@/components/Loader";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
+
+
+dayjs.locale("pt-br")
+
 import { useEffect } from "react";
 export default function RootLayout() {
     const [fontIsLoaded, error] = useFonts({

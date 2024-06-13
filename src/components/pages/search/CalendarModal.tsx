@@ -2,11 +2,12 @@ import {
     Modal,
     ModalProps,
     Platform,
+    Pressable,
     ScrollView,
     useWindowDimensions,
 } from "react-native";
 import { SearchModalHeader } from "./SearchModalHeader";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { VerticalStack } from "@/components/VerticalStack";
 
@@ -18,6 +19,8 @@ import { Center } from "@/components/Center";
 import { Text } from "@/components/Text";
 import { getMonthsCalendar } from "@/utils/calendar";
 import { CalendarDayCard } from "./CadlendarDayCard";
+import { Button } from "@/components/Button";
+import { useSafeBottom } from "@/hooks/useSafeBottom";
 
 const weekDays = [
     {
@@ -65,6 +68,7 @@ type CalendarModalProps = ModalProps & {
 export function CalendarModal(props: CalendarModalProps) {
     const { closeModal, visible, ...rest } = props;
     const [months, setMonths] = useState<monthProps[]>([]);
+    const { safeBottom } = useSafeBottom();
 
     const [startDateSelected, setStartDateSelected] = useState<Date | null>(
         null
@@ -108,9 +112,21 @@ export function CalendarModal(props: CalendarModalProps) {
         setEndDateSelected(dateSelected);
     }
 
-    useEffect(() => {
-        const response = getMonthsCalendar(12);
+    function clearDate() {
+        setStartDateSelected(null);
+        setEndDateSelected(null);
+    }
+
+    const hasDateSelected =
+        startDateSelected != null || endDateSelected != null;
+
+    const handleGetCalendar = useCallback(() => {
+        const response = getMonthsCalendar(6);
         setMonths(response);
+    },[])
+
+    useEffect(() => {
+        handleGetCalendar()
     }, []);
 
     return (
@@ -123,9 +139,9 @@ export function CalendarModal(props: CalendarModalProps) {
             transparent
             statusBarTranslucent
         >
-            <VerticalStack className="flex-1 bg-gray-200 ">
+            <VerticalStack className="flex-1 bg-gray-100 ">
                 <SearchModalHeader closeModal={closeModal} />
-                <VerticalStack className="flex-1 bg-white  pt-6 rounded-t-2xl mt-7 px-5">
+                <VerticalStack className="flex-1 bg-white  pt-9 rounded-t-3xl mt-7 px-5">
                     <Heading>When's your trip?</Heading>
                     <HorizontalStack className="mt-5">
                         {weekDays.map((day) => (
@@ -141,7 +157,11 @@ export function CalendarModal(props: CalendarModalProps) {
                         ))}
                     </HorizontalStack>
 
-                    <ScrollView showsVerticalScrollIndicator={false}>
+                    <ScrollView
+                        disableIntervalMomentum={true}
+                       
+                        showsVerticalScrollIndicator={false}
+                    >
                         {months.map((month, index) => (
                             <VerticalStack key={month.title} className="mt-5">
                                 <Heading>{month.title}</Heading>
@@ -165,6 +185,29 @@ export function CalendarModal(props: CalendarModalProps) {
                         ))}
                     </ScrollView>
                 </VerticalStack>
+                <HorizontalStack
+                    className=" justify-between items-center bg-white px-6 pt-5 "
+                    style={{
+                        marginTop: "auto",
+                        paddingBottom: safeBottom,
+                    }}
+                >
+                    <Pressable
+                        onPress={() => {
+                            hasDateSelected ? clearDate() : closeModal();
+                        }}
+                    >
+                        <Text fontSize="large" className="underline">
+                            {hasDateSelected ? "Resetar" : "Fechar"}
+                        </Text>
+                    </Pressable>
+                    <Button
+                        textClassName="text-white text-lg"
+                        className="bg-black h-20 rounded-lg "
+                    >
+                        Próximo
+                    </Button>
+                </HorizontalStack>
             </VerticalStack>
         </Modal>
     );
