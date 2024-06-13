@@ -4,11 +4,13 @@ import { HorizontalStack } from "@/components/HorizontalStack";
 import { Input } from "@/components/Input";
 import { Text } from "@/components/Text";
 import { VerticalStack } from "@/components/VerticalStack";
+import { CalendarModal } from "@/components/pages/search/CalendarModal";
 import { SearchLocationModal } from "@/components/pages/search/SearchLocationModal";
 import { useSafeBottom } from "@/hooks/useSafeBottom";
 import { useSafeTop } from "@/hooks/useSafeTop";
 import { theme } from "@/styles/theme";
 import { Feather } from "@expo/vector-icons";
+import { Link } from "expo-router";
 import { useState } from "react";
 
 import { Pressable, TouchableOpacity } from "react-native";
@@ -19,12 +21,22 @@ export default function search() {
     const [locationSearchModalIsVisible, setLocationSearchModalIsVisible] =
         useState(false);
 
+    const [calendarModalIsVisible, setCalendarModalIsVisible] = useState(false);
+
     function openLocationSearchModal() {
         setLocationSearchModalIsVisible(true);
     }
 
     function closeLocationSearchModal() {
         setLocationSearchModalIsVisible(false);
+    }
+
+    function openCalendarModal() {
+        setCalendarModalIsVisible(true);
+    }
+
+    function closeCalendarModal() {
+        setCalendarModalIsVisible(false);
     }
 
     return (
@@ -36,9 +48,13 @@ export default function search() {
         >
             <VerticalStack className="p-3 flex-1">
                 <HorizontalStack>
-                    <Center className="size-8 bg-white rounded-full">
-                        <Feather name="x" size={18} color={"#000"} />
-                    </Center>
+                    <Link asChild href="(tabs)">
+                        <Pressable hitSlop={30}>
+                            <Center className="size-8 bg-white rounded-full">
+                                <Feather name="x" size={18} color={"#000"} />
+                            </Center>
+                        </Pressable>
+                    </Link>
                 </HorizontalStack>
                 <VerticalStack className="mt-7 gap-4">
                     <Input.Root className="bg-white p-6 rounded-3xl border-black/15">
@@ -50,7 +66,9 @@ export default function search() {
                         >
                             Where to?
                         </Input.Label>
+
                         <Button
+                            hitSlop={40}
                             onPress={openLocationSearchModal}
                             LeftIcon={
                                 <Feather
@@ -65,7 +83,10 @@ export default function search() {
                         </Button>
                     </Input.Root>
 
-                    <TouchableOpacity activeOpacity={0.7}>
+                    <TouchableOpacity
+                        activeOpacity={0.7}
+                        onPress={openCalendarModal}
+                    >
                         <HorizontalStack className="justify-between px-4 py-6 bg-white rounded-2xl">
                             <Text className="text-gray-600">When</Text>
                             <Text fontFamily="InterBold">any week</Text>
@@ -106,6 +127,10 @@ export default function search() {
             <SearchLocationModal
                 visible={locationSearchModalIsVisible}
                 closeModal={closeLocationSearchModal}
+            />
+            <CalendarModal
+                visible={calendarModalIsVisible}
+                closeModal={closeCalendarModal}
             />
         </VerticalStack>
     );

@@ -16,6 +16,7 @@ import {
     Platform,
     Pressable,
 } from "react-native";
+import { SearchModalHeader } from "./SearchModalHeader";
 
 type SearchLocationModalProps = ModalProps & {
     closeModal: () => void;
@@ -41,20 +42,9 @@ export function SearchLocationModal(props: SearchLocationModalProps) {
                 }}
             >
                 <VerticalStack className="flex-1">
-                    <HorizontalStack
-                        className="px-5"
-                        style={{ paddingTop: safeTop }}
-                    >
-                        <Pressable onPress={closeModal}>
-                            <Center className="size-8 bg-white rounded-full">
-                                <Feather
-                                    name="arrow-left"
-                                    size={22}
-                                    color={"#000"}
-                                />
-                            </Center>
-                        </Pressable>
-                    </HorizontalStack>
+                   <SearchModalHeader
+                        closeModal={closeModal}
+                   />
                     <VerticalStack className="flex-1 bg-gray-100 rounded-t-2xl mt-7 px-5">
                         <Input.Input
                             LeftIcon={
