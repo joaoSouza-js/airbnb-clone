@@ -119,10 +119,10 @@ export function PlacePreview(props: PlacePreviewProps) {
 
             <HorizontalStack className="mt-3 gap-2 ">
                 <Text fontSize="small" className="text-gray-600">
-                    1 bed
+                    {place.bed} bed
                 </Text>
                 <Text fontSize="small" className="text-gray-600">
-                    1 bedromm
+                    {place.bedroom} bedroom
                 </Text>
             </HorizontalStack>
             <Text numberOfLines={2} className="text-gray-700 mt-1">
@@ -132,7 +132,9 @@ export function PlacePreview(props: PlacePreviewProps) {
                 <Text fontFamily="InterBold" className="line-through">
                     ${place.price}
                 </Text>
-                <Text className="text-gray-700" fontFamily="InterBold">${placeWithDiscount}</Text>
+                <Text className="text-gray-700" fontFamily="InterBold">
+                    ${placeWithDiscount}
+                </Text>
                 <Text>/ {place.availablePeriod}</Text>
                 <Text className="underline">$220 total</Text>
             </HorizontalStack>

@@ -33,7 +33,7 @@ type ButtonProps = PressableProps &
     ButtonStylesProps & {
         textClassName?: string;
         children: React.ReactNode;
-        isTextContext?: boolean;
+        isTextContent?: boolean;
         LeftIcon?: React.ReactNode;
         RightIcon?: React.ReactNode;
     };
@@ -43,7 +43,7 @@ export const Button = forwardRef<View, ButtonProps>((props, ref) => {
         className,
         textClassName,
         fontFamily = "InterMedium",
-        isTextContext = true,
+        isTextContent = true,
         LeftIcon,
         RightIcon,
         fontSize = "medium",
@@ -59,24 +59,25 @@ export const Button = forwardRef<View, ButtonProps>((props, ref) => {
         >
             {
                 hasIcon && (
-                    <VerticalStack className="size-7">
+                    <VerticalStack className="size-7 ">
                             {LeftIcon && LeftIcon}
                         
                     </VerticalStack>
                 )
             }
-            {isTextContext && (
+            {isTextContent && (
                 <Text
                     fontFamily={fontFamily}
                     fontSize={fontSize}
                     type={fontColor}
+                    className={textClassName}
                 >
                     {" "}
                     {children}{" "}
                 </Text>
 
             )}
-            {!isTextContext && children}
+            {!isTextContent && children}
 
             {
                 hasIcon && (

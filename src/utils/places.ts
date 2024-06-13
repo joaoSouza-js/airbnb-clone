@@ -13,6 +13,8 @@ export const places = [
         discount: 10,
         availablePeriod: "night",
         location: "Asheville, NC",
+        bed: 3,
+        bedroom: 2,
     },
     {
         id: "1",
@@ -28,6 +30,8 @@ export const places = [
         discount: 5,
         availablePeriod: "night",
         location: "Portland, OR",
+        bed: 2,
+        bedroom: 1,
     },
     {
         id: "2",
@@ -43,6 +47,8 @@ export const places = [
         discount: 15,
         availablePeriod: "night",
         location: "New York, NY",
+        bed: 4,
+        bedroom: 3,
     },
     {
         id: "3",
@@ -58,6 +64,8 @@ export const places = [
         discount: 20,
         availablePeriod: "night",
         location: "Malibu, CA",
+        bed: 5,
+        bedroom: 4,
     },
     {
         id: "4",
@@ -73,6 +81,8 @@ export const places = [
         discount: 8,
         availablePeriod: "night",
         location: "Denver, CO",
+        bed: 3,
+        bedroom: 2,
     },
     {
         id: "5",
@@ -88,6 +98,8 @@ export const places = [
         discount: 12,
         availablePeriod: "night",
         location: "Lake Tahoe, CA",
+        bed: 4,
+        bedroom: 3,
     },
     {
         id: "6",
@@ -103,6 +115,8 @@ export const places = [
         discount: 10,
         availablePeriod: "night",
         location: "Austin, TX",
+        bed: 6,
+        bedroom: 5,
     },
     {
         id: "7",
@@ -118,6 +132,8 @@ export const places = [
         discount: 18,
         availablePeriod: "night",
         location: "San Francisco, CA",
+        bed: 3,
+        bedroom: 2,
     },
     {
         id: "8",
@@ -133,6 +149,8 @@ export const places = [
         discount: 20,
         availablePeriod: "night",
         location: "Miami, FL",
+        bed: 5,
+        bedroom: 4,
     },
     {
         id: "9",
@@ -148,6 +166,8 @@ export const places = [
         discount: 7,
         availablePeriod: "night",
         location: "Nashville, TN",
+        bed: 2,
+        bedroom: 1,
     },
     {
         id: "10",
@@ -160,8 +180,9 @@ export const places = [
         discount: 10,
         availablePeriod: "night",
         location: "Aspen, CO",
+        bed: 4,
+        bedroom: 3,
     },
 ];
 
-
-export type  PLACE_PREVIEW_DTO =  typeof places[0]
+export type PLACE_PREVIEW_DTO = typeof places[0];

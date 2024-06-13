@@ -19,12 +19,13 @@ import { theme } from "@/styles/theme";
 import { VerticalStack } from "@/components/VerticalStack";
 import { Button } from "@/components/Button";
 import { Link, router } from "expo-router";
+import { useEffect } from "react";
 export default function Root() {
     const { colors } = theme;
     const { safeTop } = useSafeTop(8);
     const dimensions = useWindowDimensions();
 
-   
+  
 
     return (
         <KeyboardAvoidingView
