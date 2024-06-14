@@ -4,14 +4,15 @@ import { ImagesCarouselSlider } from "@/components/ImagesCarouselSlider";
 import { Text } from "@/components/Text";
 import { VerticalStack } from "@/components/VerticalStack";
 import { FormatterPrice } from "@/utils/FormatterPrice";
-import { Feather } from "@expo/vector-icons";
+import { Feather, FontAwesome, } from "@expo/vector-icons";
 import { Pressable, useWindowDimensions } from "react-native";
 
 type MapPlaceDetailsProps = {
     data: placeDetailProps;
+    closePlaceDetails: () => void;
 };
 
-export function MapPlaceDetails({ data }: MapPlaceDetailsProps) {
+export function MapPlaceDetails({ data,closePlaceDetails }: MapPlaceDetailsProps) {
     const dimensions = useWindowDimensions();
     const carouselHeigh = (23 / 100) * dimensions.height;
     return (
@@ -33,7 +34,7 @@ export function MapPlaceDetails({ data }: MapPlaceDetailsProps) {
                             />
                         </Pressable>
 
-                        <Pressable className="justify-center items-center size-8 rounded-full bg-gray-300">
+                        <Pressable onPress={closePlaceDetails} className="justify-center items-center size-8 rounded-full bg-gray-300">
                             <Feather
                                 name="x"
                                 size={18}
@@ -45,9 +46,20 @@ export function MapPlaceDetails({ data }: MapPlaceDetailsProps) {
                 />
                 <VerticalStack className="p-4 pt-3">
                     <VerticalStack className="gap-1">
-                        <Text fontFamily="InterMedium">{data.title}</Text>
+                        <HorizontalStack className="justify-between items-center gap-3">
+                            <Text numberOfLines={1} className="flex-1" fontFamily="InterMedium">{data.title}</Text>      
+                            <HorizontalStack className="gap-1 items-center">
+                                <FontAwesome
+                                    name="star"
+                                    size={14}
+                                    color={"black"}
+                                />
+                                <Text  className="text-black">{data.rating} ({data.amountPeopleRate}) </Text>
+                            </HorizontalStack>
+                        </HorizontalStack>
+
                         <Text numberOfLines={1} className="text-gray-500">
-                            this is the description of the place
+                           {data.description}
                         </Text>
                     </VerticalStack>
 

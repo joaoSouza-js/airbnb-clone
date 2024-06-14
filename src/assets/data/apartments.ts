@@ -7,6 +7,8 @@ export const apartments = [
         title: "Cozy Studio in Downtown SF",
         numberOfStars: 5,
         rating: 4.8,
+        description: "A cozy studio located in the heart of downtown San Francisco. Perfect for a solo traveler or a couple looking to explore the city.",
+        amountPeopleRate: 95,
         images: [
             "https://news.airbnb.com/wp-content/uploads/sites/4/2019/06/PJM020719Q202_Luxe_WanakaNZ_LivingRoom_0264-LightOn_R1.jpg?fit=2500%2C1666",
             "https://i.pinimg.com/236x/b2/29/cf/b229cf86ac40ce97eb728e221352669b.jpg",
@@ -23,6 +25,8 @@ export const apartments = [
         title: "Modern Apartment Near Golden Gate Park",
         numberOfStars: 4,
         rating: 4.5,
+        description: "A modern apartment just a short walk from Golden Gate Park. Enjoy the serene environment and contemporary amenities.",
+        amountPeopleRate: 88,
         images: [
             "https://media.cntraveler.com/photos/5d112d50c4d7bd806dbc00a4/16:9/w_2560%2Cc_limit/airbnb%2520luxe.jpg",
             "https://i.pinimg.com/236x/b2/29/cf/b229cf86ac40ce97eb728e221352669b.jpg",
@@ -39,6 +43,8 @@ export const apartments = [
         title: "Charming Victorian Flat in Mission District",
         numberOfStars: 3,
         rating: 4.2,
+        description: "A charming Victorian flat in the vibrant Mission District. Experience the unique blend of historical architecture and modern living.",
+        amountPeopleRate: 75,
         images: [
             "https://a0.muscache.com/pictures/27c09c24-e29d-4cd9-8c28-edfa84868da4.jpg",
             "https://i.pinimg.com/236x/b2/29/cf/b229cf86ac40ce97eb728e221352669b.jpg",
@@ -55,7 +61,8 @@ export const apartments = [
         title: "Luxury Loft in Financial District",
         numberOfStars: 5,
         rating: 4.9,
-
+        description: "A luxury loft located in the Financial District. Offers stunning city views and top-notch amenities for a comfortable stay.",
+        amountPeopleRate: 102, // Ensure this is 100 or below
         images: [
             "https://a0.muscache.com/im/pictures/b61ba60e-7b9e-48b5-9036-aacc2579a39d.jpg",
             "https://i.pinimg.com/236x/b2/29/cf/b229cf86ac40ce97eb728e221352669b.jpg",
@@ -72,6 +79,8 @@ export const apartments = [
         title: "Spacious 2-Bedroom in Sunset District",
         numberOfStars: 4,
         rating: 4.6,
+        description: "A spacious 2-bedroom apartment in the Sunset District. Ideal for families or groups, with easy access to public transportation and local attractions.",
+        amountPeopleRate: 90,
         images: [
             "https://pyxis.nymag.com/v1/imgs/5f1/db3/bce7fbac042b55a47b4d4260428262c17d-23-private-swimming-hole-cornwall-ct.rsquare.w600.jpg",
             "https://i.pinimg.com/236x/b2/29/cf/b229cf86ac40ce97eb728e221352669b.jpg",
@@ -83,3 +92,4 @@ export const apartments = [
 ];
 
 export type placeDetailProps = (typeof apartments)[0];
+
