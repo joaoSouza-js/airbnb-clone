@@ -27,6 +27,9 @@ export function SearchLocationModal(props: SearchLocationModalProps) {
     const [locationSearched, setLocationSearched] = useState<string>("");
     const { safeTop } = useSafeTop();
     const { safeBottom } = useSafeBottom(20);
+    function clearLocationSearched() {
+        setLocationSearched("");
+    }
     return (
         <Modal
             {...rest}
@@ -42,11 +45,22 @@ export function SearchLocationModal(props: SearchLocationModalProps) {
                 }}
             >
                 <VerticalStack className="flex-1">
-                   <SearchModalHeader
-                        closeModal={closeModal}
-                   />
+                    <SearchModalHeader closeModal={closeModal} />
                     <VerticalStack className="flex-1 bg-gray-100 rounded-t-2xl mt-7 px-5">
                         <Input.Input
+                            RightIcon={
+                                <Pressable
+                                    hitSlop={10}
+                                    onPress={clearLocationSearched}
+                                    className="size-6 items-center bg-gray-400 rounded-full justify-center"
+                                >
+                                    <Feather
+                                        name="x"
+                                        size={16}
+                                        color={"white"}
+                                    />
+                                </Pressable>
+                            }
                             LeftIcon={
                                 <Feather
                                     name="search"
@@ -65,8 +79,9 @@ export function SearchLocationModal(props: SearchLocationModalProps) {
                             <VerticalStack className="flex-1">
                                 <FlatList
                                     ListHeaderComponent={() => (
-                                        <Text className="mb-5">Recent searches</Text>
-
+                                        <Text className="mb-5">
+                                            Recent searches
+                                        </Text>
                                     )}
                                     showsVerticalScrollIndicator={false}
                                     data={recentLocations}
@@ -75,7 +90,6 @@ export function SearchLocationModal(props: SearchLocationModalProps) {
                                         flexGrow: 1,
                                         paddingBottom: safeBottom,
                                     }}
-                                   
                                     keyExtractor={(item) => item.id}
                                     ItemSeparatorComponent={() => (
                                         <Center className="size-6" />
