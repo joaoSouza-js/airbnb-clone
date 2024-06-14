@@ -25,8 +25,6 @@ export default function Root() {
     const { safeTop } = useSafeTop(8);
     const dimensions = useWindowDimensions();
 
-    
-
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}

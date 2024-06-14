@@ -71,7 +71,7 @@ export function SearchLocationModal(props: SearchLocationModalProps) {
                             autoFocus={visible}
                             value={locationSearched}
                             onChangeText={setLocationSearched}
-                            className="bg-gray-100 border-gray-600 rounded-lg"
+                            className="bg-gray-100 h-16 rounded-lg"
                             placeholder="Search destination"
                         />
 

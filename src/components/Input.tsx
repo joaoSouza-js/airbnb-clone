@@ -51,8 +51,8 @@ const inputStyles = tv({
             secondary: "border-gray-100 ",
         },
         isFocus: {
-            true: "border-gray-900",
-            false: "",
+            true: "border-gray-700",
+            false: "border-gray-100",
         },
         isError: {
             true: "border-red-500",

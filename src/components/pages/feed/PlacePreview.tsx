@@ -12,11 +12,9 @@ import {
     ViewToken,
     useWindowDimensions,
 } from "react-native";
+import { ViewableItemsChangedCallback } from "@/@types/flatList_slide_change_event";
 
-type ViewableItemsChangedCallback = (info: {
-    viewableItems: ViewToken[];
-    changed: ViewToken[];
-}) => void;
+
 type PlacePreviewProps = {
     data: PLACE_PREVIEW_DTO;
 };

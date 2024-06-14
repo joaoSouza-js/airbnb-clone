@@ -7,6 +7,7 @@ import { HorizontalStack } from "@/components/HorizontalStack";
 import { Feather } from "@expo/vector-icons";
 import { useSafeBottom } from "@/hooks/useSafeBottom";
 import { Button } from "@/components/Button";
+import { useState } from "react";
 
 type GuestingModalProps = ModalProps & {
     closeModal: () => void;
@@ -15,6 +16,20 @@ type GuestingModalProps = ModalProps & {
 export function GuestingModal(props: GuestingModalProps) {
     const { closeModal, visible, ...rest } = props;
     const { safeBottom } = useSafeBottom();
+    const [adultGuests, setAdultGuests] = useState(0);
+
+    function increaseAdultGuests() {
+        setAdultGuests(state => state + 1);
+    }
+
+    function decreaseAdultGuests() {
+        setAdultGuests(state => {
+             return Math.max(0, state - 1);
+        });
+    }
+
+   
+
     return (
         <Modal
             {...rest}
@@ -38,15 +53,15 @@ export function GuestingModal(props: GuestingModalProps) {
                                 </Text>
                             </VerticalStack>
                             <HorizontalStack className="items-center gap-3">
-                                <Pressable className="size-10 border border-gray-500 rounded-full items-center justify-center">
+                                <Pressable onPress={decreaseAdultGuests} className="size-10 border border-gray-500 rounded-full items-center justify-center">
                                     <Feather
                                         name="minus"
                                         size={18}
                                         color={"#000"}
                                     />
                                 </Pressable>
-                                <Text>0</Text>
-                                <Pressable className="size-10 border border-gray-500 rounded-full items-center justify-center">
+                                <Text>{adultGuests}</Text>
+                                <Pressable onPress={increaseAdultGuests} className="size-10 border border-gray-500 rounded-full items-center justify-center">
                                     <Feather
                                         name="plus"
                                         size={18}
