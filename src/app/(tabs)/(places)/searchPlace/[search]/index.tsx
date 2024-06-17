@@ -5,8 +5,10 @@ import { Text } from "@/components/Text";
 import { VerticalStack } from "@/components/VerticalStack";
 import { MapPlaceDetails } from "@/components/pages/searchPlace/MapPlaceDetails";
 import { MapPlaceMarker } from "@/components/pages/searchPlace/MapPlaceMarker";
+import { PlacesBottomSheet } from "@/components/pages/searchPlace/PlaceBottomSheet";
+import BottomSheet from "@gorhom/bottom-sheet/lib/typescript/components/bottomSheet/BottomSheet";
 import { Tabs, useLocalSearchParams } from "expo-router";
-import { useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import MapView, { Marker, Overlay } from "react-native-maps";
 type SearchPlaceScreenProps = {
     search: string;
@@ -17,12 +19,23 @@ export default function SearchPlace() {
     const [placeSelected, setPlaceSelected] = useState<placeDetailProps | null>(
         null
     );
+    const initialSnapPoints = useMemo(() => [55, "40%", "90%"], []);
     function handleSelectPlace(place: placeDetailProps) {
         setPlaceSelected(place);
     }
 
     function clearPlaceSelected() {
         setPlaceSelected(null);
+    }
+
+    const bottomSheetRef = useRef<BottomSheet>(null);
+
+    function handleOpenBottomSheetMenu() {
+        bottomSheetRef.current?.expand();
+    }
+
+    function closeBottomSheetMenu() {
+        bottomSheetRef.current?.close();
     }
 
     return (
@@ -62,6 +75,14 @@ export default function SearchPlace() {
                 <MapPlaceDetails
                     closePlaceDetails={clearPlaceSelected}
                     data={placeSelected}
+                />
+            )}
+
+            {placeSelected === null && (
+                <PlacesBottomSheet
+                    ref={bottomSheetRef}
+                    children={null}
+                    snapPoints={initialSnapPoints}
                 />
             )}
         </VerticalStack>

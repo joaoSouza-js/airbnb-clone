@@ -18,6 +18,7 @@ import {
 import { Loader } from "@/components/Loader";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
+import {GestureHandlerRootView} from "react-native-gesture-handler"
 
 
 dayjs.locale("pt-br")
@@ -40,7 +41,8 @@ export default function RootLayout() {
     }
 
     return (
-        <>
+        <GestureHandlerRootView className="flex-1" >
+        
             <StatusBar style="dark" translucent backgroundColor="transparent" />
             <Stack
                 screenOptions={{
@@ -51,6 +53,6 @@ export default function RootLayout() {
                 <Stack.Screen name="(tabs)" />
                 <Stack.Screen name="search" />
             </Stack>
-        </>
+        </GestureHandlerRootView>
     );
 }

@@ -84,9 +84,11 @@ export default function Root() {
                             <Heading type="secondary" className="text-8xl">
                                 Go {"\n"}near
                             </Heading>
+                            <Link href={"(tabs)"} asChild>
                             <Button className="self-start rounded-lg mt-10">
                                 Explore nearby stays
                             </Button>
+                            </Link>
                         </VerticalStack>
                     </ImageBackground>
                 </VerticalStack>

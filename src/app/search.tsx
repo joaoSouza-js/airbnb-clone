@@ -127,15 +127,17 @@ export default function search() {
                         Clear all
                     </Text>
                 </Pressable>
-                <Button
-                    LeftIcon={
-                        <Feather name="search" color={"white"} size={20} />
-                    }
-                    textClassName="text-white text-lg"
-                    className="bg-red-500 h-20 rounded-lg "
-                >
-                    search
-                </Button>
+                <Link asChild href="/(tabs)/(places)/searchPlace/oioi"> 
+                    <Button
+                        LeftIcon={
+                            <Feather name="search" color={"white"} size={20} />
+                        }
+                        textClassName="text-white text-lg"
+                        className="bg-red-500 h-20 rounded-lg "
+                    >
+                        search
+                    </Button>
+                </Link>
             </HorizontalStack>
             <SearchLocationModal
                 visible={locationSearchModalIsVisible}
